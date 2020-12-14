@@ -79,13 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _filterMovies(double rating, bool lower) {
     List<dynamic> movies;
     if (lower) {
-      movies = _movies
-          .where((dynamic element) => double.tryParse(element.rating) < rating)
-          .toList();
+      movies = _movies.where((dynamic element) => double.tryParse(element.rating) < rating).toList();
     } else {
-      movies = _movies
-          .where((dynamic element) => double.tryParse(element.rating) > rating)
-          .toList();
+      movies = _movies.where((dynamic element) => double.tryParse(element.rating) > rating).toList();
     }
     setState(() {
       _movies = movies;
@@ -102,8 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: SimpleDialog(
               backgroundColor: Colors.black,
               title: const Center(
-                child: Text('Filtering by rating',
-                    style: TextStyle(color: Colors.white)),
+                child: Text('Filtering by rating', style: TextStyle(color: Colors.white)),
               ),
               children: <Widget>[
                 Padding(
@@ -171,20 +166,17 @@ class _MyHomePageState extends State<MyHomePage> {
       return Image.network(
         _movies[index].mediumCover,
         fit: BoxFit.fill,
-        errorBuilder:
-            (BuildContext context, Object error, StackTrace stackTrace) {
+        errorBuilder: (BuildContext context, Object error, StackTrace stackTrace) {
           return const Icon(Icons.error);
         },
-        loadingBuilder: (BuildContext context, Widget child,
-            ImageChunkEvent loadingProgress) {
+        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
           if (loadingProgress == null) {
             return child;
           }
           return Center(
             child: CircularProgressIndicator(
               value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes
+                  ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
                   : null,
             ),
           );
@@ -239,9 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.push<dynamic>(
                   context,
-                  MaterialPageRoute<dynamic>(
-                      builder: (BuildContext context) =>
-                          MoviePage(movie: _movies[index])),
+                  MaterialPageRoute<dynamic>(builder: (BuildContext context) => MoviePage(movie: _movies[index])),
                 );
               },
               child: _getCover(index),

@@ -31,19 +31,15 @@ class _MoviePageState extends State<MoviePage> {
                   fit: BoxFit.fill,
                   width: 400,
                   height: 450,
-                  errorBuilder: (BuildContext context, Object error,
-                          StackTrace stackTrace) =>
-                      const Icon(Icons.error),
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent loadingProgress) {
+                  errorBuilder: (BuildContext context, Object error, StackTrace stackTrace) => const Icon(Icons.error),
+                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent loadingProgress) {
                     if (loadingProgress == null) {
                       return child;
                     }
                     return Center(
                       child: CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes
+                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes
                             : null,
                       ),
                     );
@@ -74,18 +70,13 @@ class _MoviePageState extends State<MoviePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Year: ' + widget.movie.year.toString(),
-                        style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   Text(
-                    'Genres' +
-                        widget.movie.genres
-                            .map<dynamic>((dynamic e) => e)
-                            .toString(),
-                    style: const TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    'Genres' + widget.movie.genres.map<dynamic>((dynamic e) => e).toString(),
+                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

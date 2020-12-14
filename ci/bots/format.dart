@@ -26,8 +26,7 @@ Future<void> main(List<String> arguments) async {
       .where(fileFilter)
       .toList();
 
-  await _runFlutterFormat(moduleRoot,
-      options: <String>[...arguments, ...files]);
+  await _runFlutterFormat(moduleRoot, options: <String>[...arguments, ...files]);
 
   print('${bold}DONE: Format successful.$reset');
 }
