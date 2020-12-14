@@ -24,9 +24,9 @@ Future<void> main(List<String> arguments) async {
 }
 
 Future<void> _runFlutterAnalyze(
-  String workingDirectory, {
-  List<String> options = const <String>[],
-}) {
+    String workingDirectory, {
+      List<String> options = const <String>[],
+    }) {
   return runCommand(
     'flutter',
     <String>['analyze', ...options],
